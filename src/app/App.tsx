@@ -17,9 +17,9 @@ import imgPostSurgery from "@/imports/post-surgery-rehabilitation.png";
 // ─── Types & Constants ────────────────────────────────────────────────────────
 type Page = "home" | "about" | "services" | "team" | "contact"; // kept for nav label mapping
 
-const WHATSAPP = "https://wa.me/918426079679";
-const CALL1 = "tel:+918426079679";
-const CALL2 = "tel:+916376135914";
+const WHATSAPP = "https://wa.me/919649579679";
+const CALL1 = "tel:+919649579679";
+const CALL2 = "tel:+919649579679";
 const MAPS = "https://maps.google.com/?q=Plot+D-23+Shreenath+Puram+Stadium+Kota+Rajasthan";
 const INSTAGRAM = "https://www.instagram.com/santosh_healix?igsh=bTRya29hZDBwdXNi";
 const FACEBOOK = "https://www.facebook.com/profile.php?id=61551608922026";
@@ -159,7 +159,7 @@ const t = {
     address: "Plot No. D-23, In Front of Shreenath Puram Stadium,\nNear Varshney Children Hospital,\nKota, Rajasthan, India",
     ctaHead: "Take the Next Step\nin Your Recovery",
     ctaBody: "Reach out to schedule an individual clinical assessment.",
-    callBtn: "Call +91 84260 79679",
+    callBtn: "Call +91 96495 79679",
     aboutHead: "About Santosh Healix",
     aboutSub: "A dedicated physiotherapy and rehabilitation centre committed to evidence-informed, patient-centred care in Kota.",
     missionHead: "Our Mission",
@@ -197,8 +197,8 @@ const t = {
     teamOrtho: "Associated Specialist",
     teamOrthoNote: "Dr. Vinay Gwalani is an associated orthopaedic specialist. Orthopaedic consultation is a separate clinical service from physiotherapy and rehabilitation.",
     doctors: [
-      { name: "Dr. Garvit Vijay", suffix: "(PT)", role: "Head of Physiotherapy", quals: "MPT (Neuro) · M.I.A.P.", affil: "Head of Physiotherapy Dept., Ethos Hospital, Kota", contact: "+91 84260 79679", bio: "Dr. Garvit Vijay leads physiotherapy and rehabilitation at Santosh Healix, with specialist expertise in neurological rehabilitation.", isPrimary: true },
-      { name: "Dr. Garima Sambhwani", suffix: "(PT)", role: "Consultant Physiotherapist", quals: "Physiotherapist", affil: "Consultant Physiotherapist, Ethos Hospital, Kota", contact: "+91 63761 35914", bio: "Dr. Garima Sambhwani is a consultant physiotherapist providing specialist rehabilitation care at Santosh Healix.", isPrimary: false },
+      { name: "Dr. Garvit Vijay", suffix: "(PT)", role: "Head of Physiotherapy", quals: "MPT (Neuro) · M.I.A.P.", affil: "Head of Physiotherapy Dept., Ethos Hospital, Kota", contact: "+91 96495 79679", bio: "Dr. Garvit Vijay leads physiotherapy and rehabilitation at Santosh Healix, with specialist expertise in neurological rehabilitation.", isPrimary: true },
+      { name: "Dr. Garima Sambhwani", suffix: "(PT)", role: "Consultant Physiotherapist", quals: "Physiotherapist", affil: "Consultant Physiotherapist, Ethos Hospital, Kota", contact: "+91 96495 79679", bio: "Dr. Garima Sambhwani is a consultant physiotherapist providing specialist rehabilitation care at Santosh Healix.", isPrimary: false },
     ],
     ortho: { name: "Dr. Vinay Gwalani", role: "Associated Orthopaedic Specialist", quals: "MBBS · D-Ortho · DNB (Orthopaedics)", bio: "Dr. Vinay Gwalani is an associated orthopaedic specialist supporting the clinical team with orthopaedic assessment and consultation." },
     contactHead: "Contact Us",
@@ -235,7 +235,7 @@ const t = {
     address: "प्लॉट नं. D-23, श्रीनाथ पुरम स्टेडियम के सामने,\nवार्ष्णेय चिल्ड्रन हॉस्पिटल के पास,\nकोटा, राजस्थान, भारत",
     ctaHead: "अपनी रिकवरी की ओर\nअगला कदम बढ़ाएँ",
     ctaBody: "हमारी टीम के साथ व्यक्तिगत नैदानिक मूल्यांकन के लिए संपर्क करें।",
-    callBtn: "कॉल करें +91 84260 79679",
+    callBtn: "कॉल करें +91 96495 79679",
     aboutHead: "संतोष हीलिक्स के बारे में",
     aboutSub: "कोटा में प्रमाण-आधारित, रोगी-केंद्रित देखभाल के लिए समर्पित केंद्र।",
     missionHead: "हमारा मिशन",
@@ -273,8 +273,8 @@ const t = {
     teamOrtho: "संबद्ध विशेषज्ञ",
     teamOrthoNote: "डॉ. विनय गोवलानी एक संबद्ध आर्थोपेडिक विशेषज्ञ हैं। आर्थोपेडिक परामर्श फिजियोथेरेपी से अलग सेवा है।",
     doctors: [
-      { name: "डॉ. गर्वित विजय", suffix: "(PT)", role: "फिजियोथेरेपी प्रमुख", quals: "MPT (Neuro) · M.I.A.P.", affil: "फिजियोथेरेपी विभाग प्रमुख, एथॉस हॉस्पिटल, कोटा", contact: "+91 84260 79679", bio: "डॉ. गर्वित विजय संतोष हीलिक्स में फिजियोथेरेपी सेवाओं का नेतृत्व करते हैं, न्यूरोलॉजिकल पुनर्वास में विशेष विशेषज्ञता के साथ।", isPrimary: true },
-      { name: "डॉ. गरिमा संभवानी", suffix: "(PT)", role: "परामर्श फिजियोथेरेपिस्ट", quals: "फिजियोथेरेपिस्ट", affil: "परामर्श फिजियोथेरेपिस्ट, एथॉस हॉस्पिटल, कोटा", contact: "+91 63761 35914", bio: "डॉ. गरिमा संभवानी संतोष हीलिक्स में विशेषज्ञ पुनर्वास देखभाल प्रदान करती हैं।", isPrimary: false },
+      { name: "डॉ. गर्वित विजय", suffix: "(PT)", role: "फिजियोथेरेपी प्रमुख", quals: "MPT (Neuro) · M.I.A.P.", affil: "फिजियोथेरेपी विभाग प्रमुख, एथॉस हॉस्पिटल, कोटा", contact: "+91 96495 79679", bio: "डॉ. गर्वित विजय संतोष हीलिक्स में फिजियोथेरेपी सेवाओं का नेतृत्व करते हैं, न्यूरोलॉजिकल पुनर्वास में विशेष विशेषज्ञता के साथ।", isPrimary: true },
+      { name: "डॉ. गरिमा संभवानी", suffix: "(PT)", role: "परामर्श फिजियोथेरेपिस्ट", quals: "फिजियोथेरेपिस्ट", affil: "परामर्श फिजियोथेरेपिस्ट, एथॉस हॉस्पिटल, कोटा", contact: "+91 96495 79679", bio: "डॉ. गरिमा संभवानी संतोष हीलिक्स में विशेषज्ञ पुनर्वास देखभाल प्रदान करती हैं।", isPrimary: false },
     ],
     ortho: { name: "डॉ. विनय गोवलानी", role: "संबद्ध आर्थोपेडिक विशेषज्ञ", quals: "MBBS · D-Ortho · DNB (Orthopaedics)", bio: "डॉ. विनय गोवलानी नैदानिक टीम का समर्थन करने वाले संबद्ध आर्थोपेडिक विशेषज्ञ हैं।" },
     contactHead: "संपर्क करें",
@@ -408,7 +408,7 @@ export function Header({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => vo
               style={{ border: `1.5px solid ${C.border}`, color: C.text }}
               onMouseOver={e => { e.currentTarget.style.borderColor = C.hero; e.currentTarget.style.color = C.hero; }}
               onMouseOut={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.color = C.text; }}>
-              <Phone className="w-4 h-4" /> +91 84260 79679
+              <Phone className="w-4 h-4" /> +91 96495 79679
             </a>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
               className={`flex items-center gap-2.5 px-6 py-3 text-base font-bold rounded-xl text-white transition-all ${sans(lang)}`}
@@ -542,10 +542,10 @@ export function Footer({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => vo
                 </p>
               </div>
               <a href={CALL1} className={`flex items-center gap-2.5 text-sm text-white/50 hover:text-white transition-colors ${sans(lang)}`}>
-                <Phone className="w-4 h-4" style={{ color: C.aqua }} /> +91 84260 79679
+                <Phone className="w-4 h-4" style={{ color: C.aqua }} /> +91 96495 79679
               </a>
               <a href={CALL2} className={`flex items-center gap-2.5 text-sm text-white/50 hover:text-white transition-colors ${sans(lang)}`}>
-                <Phone className="w-4 h-4" style={{ color: C.aqua }} /> +91 63761 35914
+                <Phone className="w-4 h-4" style={{ color: C.aqua }} /> +91 96495 79679
               </a>
             </div>
           </div>
@@ -1124,8 +1124,8 @@ export function HomePage() {
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { doc: c.doctors[0], img: imgGarvit, phone: CALL1, phoneLabel: "+91 84260 79679", showWa: true },
-              { doc: c.doctors[1], img: imgGarima, phone: CALL2, phoneLabel: "+91 63761 35914", showWa: false },
+              { doc: c.doctors[0], img: imgGarvit, phone: CALL1, phoneLabel: "+91 96495 79679", showWa: true },
+              { doc: c.doctors[1], img: imgGarima, phone: CALL2, phoneLabel: "+91 96495 79679", showWa: false },
               { doc: c.ortho as any, img: imgVinay, phone: null, phoneLabel: null, showWa: false, isOrtho: true },
             ].map(({ doc, img, phone, phoneLabel, showWa, isOrtho }, i) => (
               <Reveal key={doc.name} delay={i * 70}>
@@ -1702,9 +1702,9 @@ export function ContactPage() {
               </Reveal>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {[
-                  { href: WHATSAPP, ext: true, bg: C.wa, icon: <MessageCircle className="w-6 h-6" />, label: c.whatsapp, sub: "+91 84260 79679" },
-                  { href: CALL1, ext: false, bg: C.hero, icon: <Phone className="w-6 h-6" />, label: lang === "en" ? "Primary Contact" : "मुख्य संपर्क", sub: "+91 84260 79679" },
-                  { href: CALL2, ext: false, bg: C.blue, icon: <Phone className="w-6 h-6" />, label: lang === "en" ? "Secondary Contact" : "द्वितीयक संपर्क", sub: "+91 63761 35914" },
+                  { href: WHATSAPP, ext: true, bg: C.wa, icon: <MessageCircle className="w-6 h-6" />, label: c.whatsapp, sub: "+91 96495 79679" },
+                  { href: CALL1, ext: false, bg: C.hero, icon: <Phone className="w-6 h-6" />, label: lang === "en" ? "Primary Contact" : "मुख्य संपर्क", sub: "+91 96495 79679" },
+                  { href: CALL2, ext: false, bg: C.blue, icon: <Phone className="w-6 h-6" />, label: lang === "en" ? "Secondary Contact" : "द्वितीयक संपर्क", sub: "+91 96495 79679" },
                   { href: MAPS, ext: true, bg: C.sub, icon: <Map className="w-6 h-6" />, label: c.getDirections, sub: lang === "en" ? "Open in Google Maps" : "Google Maps में खोलें" },
                 ].map(({ href, ext, bg, icon, label, sub }, i) => (
                   <Reveal key={href} delay={i * 60}>

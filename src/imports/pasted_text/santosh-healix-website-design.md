@@ -18,7 +18,7 @@ The primary conversion goal is to encourage visitors to:
 3. Get directions to the clinic
 
 Primary contact:
-+91 84260 79679
++91 96495 79679
 
 Do not create appointment forms, patient accounts, medical-data collection, or online payments.
 
@@ -246,7 +246,7 @@ Heading:
 Buttons:
 
 - WhatsApp Now
-- Call +91 84260 79679
+- Call +91 96495 79679
 
 ABOUT PAGE
 
@@ -308,14 +308,14 @@ Dr. Garvit Vijay (PT)
 - MPT (Neuro)
 - M.I.A.P.
 - Head of Physiotherapy Department, Ethos Hospital, Kota
-- Primary contact: +91 84260 79679
+- Primary contact: +91 96495 79679
 - Position as the primary website contact and neuro-rehabilitation specialist
 
 Dr. Garima Sambhwani (PT)
 
 - Consultant Physiotherapist
 - Ethos Hospital, Kota
-- Contact: +91 63761 35914
+- Contact: +91 96495 79679
 
 Dr. Vinay Gwalani
 
@@ -338,10 +338,10 @@ Near Varshney Children Hospital,
 Kota, Rajasthan, India
 
 Primary contact:
-+91 84260 79679
++91 96495 79679
 
 Secondary contact:
-+91 63761 35914
++91 96495 79679
 
 Create:
 
