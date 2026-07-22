@@ -1672,6 +1672,16 @@ export function TeamPage() {
 export function ContactPage() {
   const { lang } = useLang();
   const c = t[lang];
+  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+  const appointmentField: CSSProperties = {
+    width: "100%",
+    padding: "14px 18px",
+    borderRadius: 16,
+    border: "1px solid #D6E2E5",
+    background: "#F1FAF8",
+    color: C.text,
+    outline: "none",
+  };
   return (
     <main>
       <PageHero
@@ -1704,7 +1714,6 @@ export function ContactPage() {
                 {[
                   { href: WHATSAPP, ext: true, bg: C.wa, icon: <MessageCircle className="w-6 h-6" />, label: c.whatsapp, sub: "+91 96495 79679" },
                   { href: CALL1, ext: false, bg: C.hero, icon: <Phone className="w-6 h-6" />, label: lang === "en" ? "Primary Contact" : "मुख्य संपर्क", sub: "+91 96495 79679" },
-                  { href: CALL2, ext: false, bg: C.blue, icon: <Phone className="w-6 h-6" />, label: lang === "en" ? "Secondary Contact" : "द्वितीयक संपर्क", sub: "+91 96495 79679" },
                   { href: MAPS, ext: true, bg: C.sub, icon: <Map className="w-6 h-6" />, label: c.getDirections, sub: lang === "en" ? "Open in Google Maps" : "Google Maps में खोलें" },
                 ].map(({ href, ext, bg, icon, label, sub }, i) => (
                   <Reveal key={href} delay={i * 60}>
@@ -1764,6 +1773,91 @@ export function ContactPage() {
               </Reveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section style={{ background: C.mint, padding: "64px 0 76px" }}>
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
+          <Reveal>
+            <form
+              action={formspreeEndpoint}
+              method="POST"
+              style={{ maxWidth: 820, margin: "0 auto", background: C.white, padding: "clamp(24px, 4vw, 42px)", borderRadius: 24, border: "1px solid #DDE7E5", boxShadow: "0 18px 50px rgba(15,37,80,0.08)" }}
+            >
+              <input type="hidden" name="_subject" value="New appointment request — Santosh Healix" />
+              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
+
+              <h2 className={serif(lang)} style={{ fontSize: "clamp(30px, 4vw, 42px)", color: C.text, fontWeight: 600, lineHeight: 1.1, marginBottom: 8 }}>
+                Request an Appointment
+              </h2>
+              <p className={sans(lang)} style={{ color: C.sub, marginBottom: 30 }}>
+                Fill the form and our team will confirm your slot within a few hours.
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-x-5 gap-y-5">
+                <label className={sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  FULL NAME *
+                  <input required name="full_name" type="text" autoComplete="name" placeholder="Your full name" style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  PHONE NUMBER *
+                  <input required name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="+91 XXXXX XXXXX" style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  EMAIL ADDRESS
+                  <input name="email" type="email" autoComplete="email" placeholder="your@email.com" style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  SERVICE REQUIRED *
+                  <select required name="service" defaultValue="" style={{ ...appointmentField, marginTop: 8 }}>
+                    <option value="" disabled>Select a service...</option>
+                    <option>Orthopaedic Physiotherapy</option>
+                    <option>Neurological Rehabilitation</option>
+                    <option>Sports Injury Rehabilitation</option>
+                    <option>Post-Fracture & Post-Surgery Rehabilitation</option>
+                    <option>Pediatric & CP Rehabilitation</option>
+                    <option>Women's Health Physiotherapy</option>
+                    <option>Stroke Rehabilitation</option>
+                    <option>Balance & Gait Training</option>
+                    <option>Pain Management</option>
+                    <option>General Consultation</option>
+                  </select>
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  PREFERRED DATE *
+                  <input required name="preferred_date" type="date" min={new Date().toISOString().split("T")[0]} style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  PREFERRED TIME SLOT *
+                  <select required name="preferred_time" defaultValue="" style={{ ...appointmentField, marginTop: 8 }}>
+                    <option value="" disabled>Select preferred time...</option>
+                    <option>Morning — 9:00 AM to 12:00 PM</option>
+                    <option>Afternoon — 12:00 PM to 4:00 PM</option>
+                    <option>Evening — 4:00 PM to 8:00 PM</option>
+                  </select>
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  MESSAGE / SYMPTOMS
+                  <textarea name="message" rows={4} placeholder="Briefly describe your condition or symptoms..." style={{ ...appointmentField, marginTop: 8, resize: "vertical" }} />
+                </label>
+              </div>
+
+              {!formspreeEndpoint && (
+                <p role="alert" className={sans(lang)} style={{ marginTop: 18, color: "#B42318", fontSize: 13, fontWeight: 600 }}>
+                  Form submission will activate after VITE_FORMSPREE_ENDPOINT is added to the deployment environment.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={!formspreeEndpoint}
+                className={sans(lang)}
+                style={{ width: "100%", marginTop: 26, padding: "16px 22px", border: 0, borderRadius: 16, background: "#104D3C", color: "#fff", fontSize: 16, fontWeight: 700, cursor: formspreeEndpoint ? "pointer" : "not-allowed", opacity: formspreeEndpoint ? 1 : 0.6 }}
+              >
+                Submit Appointment Request
+              </button>
+            </form>
+          </Reveal>
         </div>
       </section>
     </main>
