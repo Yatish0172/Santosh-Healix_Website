@@ -1453,6 +1453,7 @@ export function ServicesPage() {
         </div>
       </div>
 
+
       <section style={{ background: C.white, paddingTop: 52, paddingBottom: 56 }}>
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -1675,7 +1676,7 @@ export function ContactPage() {
   const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
   const appointmentField: CSSProperties = {
     width: "100%",
-    padding: "14px 18px",
+    padding: "11px 14px",
     borderRadius: 16,
     border: "1px solid #D6E2E5",
     background: "#F1FAF8",
@@ -1692,17 +1693,150 @@ export function ContactPage() {
         image="https://images.unsplash.com/photo-1645005512827-48ff6f97848a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1800&q=80"
       />
 
-      <section style={{ background: C.white, paddingTop: 52, paddingBottom: 56 }}>
+      <div className="grid lg:grid-cols-2 items-stretch">
+      <section className="lg:order-2" style={{ background: C.mint, padding: "36px 0 44px" }}>
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
+          <div className="grid grid-cols-1 gap-4 items-stretch">
+            <Reveal>
+              <aside style={{ height: "100%", minHeight: 360, padding: "clamp(24px, 3vw, 32px)", borderRadius: 24, background: C.hero, color: "#fff", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <div aria-hidden="true" style={{ position: "absolute", width: 260, height: 260, borderRadius: "50%", right: -100, top: -95, border: "1px solid rgba(255,255,255,0.10)" }} />
+                <div aria-hidden="true" style={{ position: "absolute", width: 180, height: 180, borderRadius: "50%", right: -70, top: -55, border: "1px solid rgba(228,184,50,0.28)" }} />
+                <div style={{ position: "relative", zIndex: 1 }}>
+                  <p className={sans(lang)} style={{ color: C.aqua, fontSize: 12, fontWeight: 800, letterSpacing: "0.16em", marginBottom: 14 }}>
+                    BOOK AN APPOINTMENT
+                  </p>
+                  <h2 className={serif(lang)} style={{ fontSize: "clamp(30px, 3vw, 40px)", fontWeight: 600, lineHeight: 1.08, marginBottom: 12 }}>
+                    Plan Your Visit
+                  </h2>
+                  <p className={sans(lang)} style={{ color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: 20 }}>
+                    Share your preferred service, date, and time. Our clinic team will contact you to confirm the most suitable available appointment.
+                  </p>
+
+                  <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
+                    {[
+                      "Choose the rehabilitation service you need",
+                      "Select a preferred date and time window",
+                      "Receive confirmation directly from our clinic team",
+                    ].map(item => (
+                      <div key={item} className={sans(lang)} style={{ display: "flex", alignItems: "flex-start", gap: 12, color: "rgba(255,255,255,0.88)", fontSize: 14, lineHeight: 1.5 }}>
+                        <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: C.aqua }} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{ position: "relative", zIndex: 1, marginTop: "auto", paddingTop: 22 }}>
+                  <p className={sans(lang)} style={{ color: "rgba(255,255,255,0.55)", fontSize: 12, marginBottom: 12 }}>
+                    Prefer to speak with us directly?
+                  </p>
+                  <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
+                    <a href={CALL1} className={sans(lang)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "12px 16px", borderRadius: 12, background: "#fff", color: C.hero, fontSize: 14, fontWeight: 700 }}>
+                      <Phone className="w-4 h-4" /> Call Clinic
+                    </a>
+                    <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={sans(lang)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "12px 16px", borderRadius: 12, background: C.wa, color: "#fff", fontSize: 14, fontWeight: 700 }}>
+                      <MessageCircle className="w-4 h-4" /> WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </aside>
+            </Reveal>
+
+            <Reveal delay={80}>
+            <form
+              action={formspreeEndpoint}
+              method="POST"
+              style={{ height: "100%", background: C.white, padding: "clamp(20px, 3vw, 28px)", borderRadius: 24, border: "1px solid #DDE7E5", boxShadow: "0 18px 50px rgba(15,37,80,0.08)" }}
+            >
+              <input type="hidden" name="_subject" value="New appointment request — Santosh Healix" />
+              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
+
+              <h2 className={serif(lang)} style={{ fontSize: "clamp(28px, 3vw, 36px)", color: C.text, fontWeight: 600, lineHeight: 1.1, marginBottom: 8 }}>
+                Request an Appointment
+              </h2>
+              <p className={sans(lang)} style={{ color: C.sub, marginBottom: 20 }}>
+                Fill the form and our team will confirm your slot within a few hours.
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-x-4 gap-y-3.5">
+                <label className={sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  FULL NAME *
+                  <input required name="full_name" type="text" autoComplete="name" placeholder="Your full name" style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  PHONE NUMBER *
+                  <input required name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="+91 XXXXX XXXXX" style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  EMAIL ADDRESS
+                  <input name="email" type="email" autoComplete="email" placeholder="your@email.com" style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  SERVICE REQUIRED *
+                  <select required name="service" defaultValue="" style={{ ...appointmentField, marginTop: 8 }}>
+                    <option value="" disabled>Select a service...</option>
+                    <option>Orthopaedic Physiotherapy</option>
+                    <option>Neurological Rehabilitation</option>
+                    <option>Sports Injury Rehabilitation</option>
+                    <option>Post-Fracture & Post-Surgery Rehabilitation</option>
+                    <option>Pediatric & CP Rehabilitation</option>
+                    <option>Women's Health Physiotherapy</option>
+                    <option>Stroke Rehabilitation</option>
+                    <option>Balance & Gait Training</option>
+                    <option>Pain Management</option>
+                    <option>General Consultation</option>
+                  </select>
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  PREFERRED DATE *
+                  <input required name="preferred_date" type="date" min={new Date().toISOString().split("T")[0]} style={{ ...appointmentField, marginTop: 8 }} />
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  PREFERRED TIME SLOT *
+                  <select required name="preferred_time" defaultValue="" style={{ ...appointmentField, marginTop: 8 }}>
+                    <option value="" disabled>Select preferred time...</option>
+                    <option>Morning — 9:00 AM to 12:00 PM</option>
+                    <option>Afternoon — 12:00 PM to 4:00 PM</option>
+                    <option>Evening — 4:00 PM to 8:00 PM</option>
+                  </select>
+                </label>
+                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
+                  MESSAGE / SYMPTOMS
+                  <textarea name="message" rows={3} placeholder="Briefly describe your condition or symptoms..." style={{ ...appointmentField, marginTop: 8, resize: "vertical" }} />
+                </label>
+              </div>
+
+              {!formspreeEndpoint && (
+                <p role="alert" className={sans(lang)} style={{ marginTop: 18, color: "#B42318", fontSize: 13, fontWeight: 600 }}>
+                  Form submission will activate after VITE_FORMSPREE_ENDPOINT is added to the deployment environment.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={!formspreeEndpoint}
+                className={sans(lang)}
+                style={{ width: "100%", marginTop: 18, padding: "13px 20px", border: 0, borderRadius: 16, background: C.hero, color: "#fff", fontSize: 16, fontWeight: 700, cursor: formspreeEndpoint ? "pointer" : "not-allowed", opacity: formspreeEndpoint ? 1 : 0.6 }}
+              >
+                Submit Appointment Request
+              </button>
+            </form>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="lg:order-1" style={{ background: C.white, paddingTop: 48, paddingBottom: 60 }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
           {/* Emergency */}
           <Reveal>
-            <div style={{ display: "flex", gap: 14, padding: "18px 20px", background: "#FFF5F5", border: `1.5px solid #FCA5A5`, borderRadius: 16, marginBottom: 48 }}>
+            <div style={{ display: "flex", gap: 14, padding: "18px 20px", background: "#FFF5F5", border: `1.5px solid #FCA5A5`, borderRadius: 16, marginBottom: 32 }}>
               <Shield className="w-5 h-5 shrink-0 mt-0.5" style={{ color: "#B42318" }} />
               <p className={`text-sm font-medium ${sans(lang)}`} style={{ color: "#B42318" }}>{c.emergency}</p>
             </div>
           </Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-10">
             {/* Actions */}
             <div>
               <Reveal>
@@ -1775,91 +1909,9 @@ export function ContactPage() {
           </div>
         </div>
       </section>
+      </div>
 
-      <section style={{ background: C.mint, padding: "64px 0 76px" }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
-          <Reveal>
-            <form
-              action={formspreeEndpoint}
-              method="POST"
-              style={{ maxWidth: 820, margin: "0 auto", background: C.white, padding: "clamp(24px, 4vw, 42px)", borderRadius: 24, border: "1px solid #DDE7E5", boxShadow: "0 18px 50px rgba(15,37,80,0.08)" }}
-            >
-              <input type="hidden" name="_subject" value="New appointment request — Santosh Healix" />
-              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
 
-              <h2 className={serif(lang)} style={{ fontSize: "clamp(30px, 4vw, 42px)", color: C.text, fontWeight: 600, lineHeight: 1.1, marginBottom: 8 }}>
-                Request an Appointment
-              </h2>
-              <p className={sans(lang)} style={{ color: C.sub, marginBottom: 30 }}>
-                Fill the form and our team will confirm your slot within a few hours.
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-x-5 gap-y-5">
-                <label className={sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  FULL NAME *
-                  <input required name="full_name" type="text" autoComplete="name" placeholder="Your full name" style={{ ...appointmentField, marginTop: 8 }} />
-                </label>
-                <label className={sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  PHONE NUMBER *
-                  <input required name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="+91 XXXXX XXXXX" style={{ ...appointmentField, marginTop: 8 }} />
-                </label>
-                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  EMAIL ADDRESS
-                  <input name="email" type="email" autoComplete="email" placeholder="your@email.com" style={{ ...appointmentField, marginTop: 8 }} />
-                </label>
-                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  SERVICE REQUIRED *
-                  <select required name="service" defaultValue="" style={{ ...appointmentField, marginTop: 8 }}>
-                    <option value="" disabled>Select a service...</option>
-                    <option>Orthopaedic Physiotherapy</option>
-                    <option>Neurological Rehabilitation</option>
-                    <option>Sports Injury Rehabilitation</option>
-                    <option>Post-Fracture & Post-Surgery Rehabilitation</option>
-                    <option>Pediatric & CP Rehabilitation</option>
-                    <option>Women's Health Physiotherapy</option>
-                    <option>Stroke Rehabilitation</option>
-                    <option>Balance & Gait Training</option>
-                    <option>Pain Management</option>
-                    <option>General Consultation</option>
-                  </select>
-                </label>
-                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  PREFERRED DATE *
-                  <input required name="preferred_date" type="date" min={new Date().toISOString().split("T")[0]} style={{ ...appointmentField, marginTop: 8 }} />
-                </label>
-                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  PREFERRED TIME SLOT *
-                  <select required name="preferred_time" defaultValue="" style={{ ...appointmentField, marginTop: 8 }}>
-                    <option value="" disabled>Select preferred time...</option>
-                    <option>Morning — 9:00 AM to 12:00 PM</option>
-                    <option>Afternoon — 12:00 PM to 4:00 PM</option>
-                    <option>Evening — 4:00 PM to 8:00 PM</option>
-                  </select>
-                </label>
-                <label className={"sm:col-span-2 " + sans(lang)} style={{ color: C.text, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em" }}>
-                  MESSAGE / SYMPTOMS
-                  <textarea name="message" rows={4} placeholder="Briefly describe your condition or symptoms..." style={{ ...appointmentField, marginTop: 8, resize: "vertical" }} />
-                </label>
-              </div>
-
-              {!formspreeEndpoint && (
-                <p role="alert" className={sans(lang)} style={{ marginTop: 18, color: "#B42318", fontSize: 13, fontWeight: 600 }}>
-                  Form submission will activate after VITE_FORMSPREE_ENDPOINT is added to the deployment environment.
-                </p>
-              )}
-
-              <button
-                type="submit"
-                disabled={!formspreeEndpoint}
-                className={sans(lang)}
-                style={{ width: "100%", marginTop: 26, padding: "16px 22px", border: 0, borderRadius: 16, background: "#104D3C", color: "#fff", fontSize: 16, fontWeight: 700, cursor: formspreeEndpoint ? "pointer" : "not-allowed", opacity: formspreeEndpoint ? 1 : 0.6 }}
-              >
-                Submit Appointment Request
-              </button>
-            </form>
-          </Reveal>
-        </div>
-      </section>
     </main>
   );
 }
