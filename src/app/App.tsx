@@ -666,7 +666,7 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
         </Reveal>
 
         {/* ── Stage ── */}
-        <div style={{ position: "relative", height: "clamp(390px, 52svh, 460px)", overflow: "visible" }}>
+        <div style={{ position: "relative", height: "clamp(500px, 56svh, 520px)", overflow: "visible" }}>
           {c.allServices.map((sv, i) => {
             const d = dist(i);
             const isActive = d === 0;
@@ -724,17 +724,17 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
                     </div>
 
                     {/* Content */}
-                    <div style={{ padding: "32px 28px 24px", display: "flex", flexDirection: "column", flex: 1 }}>
-                      <h3 className={`font-bold ${sans(lang)}`} style={{ fontSize: "clamp(18px, 1.8vw, 22px)", color: C.text, lineHeight: 1.2, marginBottom: 6 }}>{sv.name}</h3>
-                      <p className={`text-sm leading-relaxed ${sans(lang)}`} style={{ color: C.sub, marginBottom: 14, flex: 1 }}>{sv.body}</p>
+                    <div style={{ padding: "28px 26px 22px", display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+                      <h3 title={sv.name} className={`font-bold ${sans(lang)}`} style={{ fontSize: "clamp(17px, 1.6vw, 21px)", color: C.text, lineHeight: 1.2, marginBottom: 6, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{sv.name}</h3>
+                      <p className={`${sans(lang)}`} style={{ color: C.sub, fontSize: 13, lineHeight: 1.5, marginBottom: 10, flex: 1, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{sv.body}</p>
                       <div style={{ width: 28, height: 2, background: `linear-gradient(90deg, ${C.aqua}, ${C.gold})`, borderRadius: 1, marginBottom: 10 }} />
                       <p className={`text-xs font-bold uppercase tracking-widest mb-1.5 ${sans(lang)}`} style={{ color: C.blue }}>
                         {lang === "en" ? "Treatment Goals" : "उपचार के लक्ष्य"}
                       </p>
-                      <p className={`text-xs leading-relaxed ${sans(lang)}`} style={{ color: C.sub, marginBottom: 18 }}>{sv.goals}</p>
+                      <p className={`text-xs ${sans(lang)}`} style={{ color: C.sub, lineHeight: 1.45, marginBottom: 14, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{sv.goals}</p>
                       <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
                         className={`inline-flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-full self-start transition-all ${sans(lang)}`}
-                        style={{ background: C.hero, color: "#fff", textDecoration: "none", boxShadow: `0 4px 14px rgba(15,37,80,0.3)` }}
+                        style={{ background: C.hero, color: "#fff", textDecoration: "none", boxShadow: `0 4px 14px rgba(15,37,80,0.3)`, flexShrink: 0 }}
                         onMouseOver={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; }}
                         onMouseOut={e => { (e.currentTarget as HTMLElement).style.transform = ""; }}>
                         <MessageCircle className="w-3 h-3" />
