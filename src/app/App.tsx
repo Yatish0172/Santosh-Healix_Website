@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, CSSProperties, ReactNode } from "react";
+import { useState, useEffect, useRef, useCallback, CSSProperties, ReactNode, FormEvent } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { useLang, Lang } from "./LangContext";
 import {
@@ -92,13 +92,13 @@ function InstagramLiveFeed({ lang }: { lang: Lang }) {
   }, []);
 
   return (
-    <div style={{ width: "100%", minHeight: 520, display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ width: "100%", height: "clamp(320px, 42svh, 420px)", overflow: "hidden", display: "flex", alignItems: "flex-start", justifyContent: "center" }}>
       <blockquote
         className="instagram-media"
         data-instgrm-permalink="https://www.instagram.com/santosh_healix/"
         data-instgrm-version="14"
         style={{ background: "#fff", border: 0, borderRadius: 24, boxShadow: "0 18px 52px rgba(15,37,80,0.14)", margin: "0 auto", maxWidth: 720, minWidth: 326, padding: 0, width: "calc(100% - 2px)" }}>
-        <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className={`flex min-h-[520px] items-center justify-center gap-2 text-base font-bold ${sans(lang)}`} style={{ color: "#C13584" }}>
+        <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className={`flex min-h-[320px] items-center justify-center gap-2 text-base font-bold ${sans(lang)}`} style={{ color: "#C13584" }}>
           <Instagram className="w-5 h-5" />
           {lang === "en" ? "Loading @santosh_healix…" : "@santosh_healix लोड हो रहा है…"}
         </a>
@@ -107,15 +107,15 @@ function InstagramLiveFeed({ lang }: { lang: Lang }) {
   );
 }
 function FacebookLiveFeed({ lang }: { lang: Lang }) {
-  const pluginUrl = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(FACEBOOK)}&tabs=timeline&width=500&height=620&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
+  const pluginUrl = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(FACEBOOK)}&tabs=timeline&width=500&height=420&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
   return (
-    <div style={{ width: "100%", minHeight: 620, display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ width: "100%", height: "clamp(320px, 42svh, 420px)", overflow: "hidden", display: "flex", alignItems: "flex-start", justifyContent: "center" }}>
       <iframe
         title="Santosh Healix Facebook feed"
         src={pluginUrl}
         width="500"
-        height="620"
-        style={{ border: "none", overflow: "hidden", width: "100%", maxWidth: 500, borderRadius: 18, background: "#fff" }}
+        height="420"
+        style={{ border: "none", overflow: "hidden", width: "100%", height: "clamp(320px, 42svh, 420px)", maxWidth: 500, borderRadius: 18, background: "#fff" }}
         scrolling="no"
         frameBorder="0"
         allowFullScreen
@@ -586,6 +586,13 @@ const HERO_DOCTORS = [
   { img: imgVinay,  name: "Dr. Vinay Gwalani",   role: "Associated Orthopaedic Specialist" },
 ];
 
+const HOME_VIEWPORT_SECTION: CSSProperties = {
+  minHeight: "calc(100svh - 80px)",
+  display: "grid",
+  alignItems: "center",
+  overflow: "hidden",
+};
+
 /* ─── 3-Card Focus Carousel ─── */
 function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
   const navigate = useNavigate();
@@ -627,7 +634,7 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
 
   return (
     <section
-      style={{ background: "linear-gradient(160deg, #09172F 0%, #0A1B3F 55%, #050B1C 100%)", paddingTop: 76, paddingBottom: 72, overflow: "hidden", position: "relative" }}
+      style={{ ...HOME_VIEWPORT_SECTION, background: "linear-gradient(160deg, #09172F 0%, #0A1B3F 55%, #050B1C 100%)", paddingTop: "clamp(32px, 5vh, 52px)", paddingBottom: "clamp(32px, 5vh, 52px)", position: "relative" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}>
 
@@ -643,7 +650,7 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
 
         {/* Header */}
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ textAlign: "center", marginBottom: "clamp(20px, 3vh, 32px)" }}>
             <span className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full ${sans(lang)}`}
               style={{ background: `${C.aqua}22`, color: C.aqua, border: `1px solid ${C.aqua}44` }}>
               {c.servicesLabel}
@@ -655,7 +662,7 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
         </Reveal>
 
         {/* ── Stage ── */}
-        <div style={{ position: "relative", height: 500, overflow: "visible" }}>
+        <div style={{ position: "relative", height: "clamp(390px, 52svh, 460px)", overflow: "visible" }}>
           {c.allServices.map((sv, i) => {
             const d = dist(i);
             const isActive = d === 0;
@@ -780,7 +787,7 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
         </div>
 
         {/* ── Controls ── */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: 28 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: 18 }}>
           <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
             {c.allServices.map((_, i) => (
               <button key={i} onClick={() => goTo(i)} aria-label={`Service ${i + 1}`}
@@ -793,7 +800,7 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
           </div>
         </div>
         {/* View all link */}
-        <div style={{ textAlign: "center", marginTop: 28 }}>
+        <div style={{ textAlign: "center", marginTop: 16 }}>
           <button onClick={() => go("/services")}
             className={`inline-flex items-center gap-2 text-base font-semibold transition-all ${sans(lang)}`}
             style={{ color: "rgba(255,255,255,0.45)", background: "none", border: "none", cursor: "pointer" }}
@@ -865,16 +872,7 @@ export function HomePage() {
   return (
     <main>
       {/* ── Hero ── */}
-      <section style={{
-        background: C.hero,
-        minHeight: "calc(100svh - 66px)",
-        display: "flex",
-        alignItems: "center",
-        paddingTop: 100,
-        paddingBottom: 72,
-        position: "relative",
-        overflow: "hidden",
-      }}>
+      <section style={{ background: C.hero, height: "calc(100svh - 66px)", minHeight: 640, display: "flex", alignItems: "center", paddingTop: 100, position: "relative", overflow: "hidden" }}>
         {/* Background image */}
         <img src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1800&q=80"
           alt="" aria-hidden="true"
@@ -949,8 +947,8 @@ export function HomePage() {
 
             {/* Right — cycling doctor photo */}
             <div className="relative hidden lg:flex justify-end" style={fadeUp(200)}>
-              <div style={{ width: "100%", maxWidth: 410, position: "relative" }}>
-                <div style={{ borderRadius: 28, overflow: "hidden", aspectRatio: "4/5", boxShadow: "0 32px 80px rgba(0,0,0,0.4)", position: "relative" }}>
+              <div style={{ width: "100%", maxWidth: 350, position: "relative" }}>
+                <div style={{ borderRadius: 24, overflow: "hidden", aspectRatio: "4/5", boxShadow: "0 26px 64px rgba(0,0,0,0.36)", position: "relative" }}>
                   {HERO_DOCTORS.map((doc, i) => (
                     <ImageWithFallback key={doc.name} src={doc.img}
                       alt={`${doc.name} — ${doc.role}, Santosh Healix`}
@@ -967,11 +965,11 @@ export function HomePage() {
 
                 {/* Doctor info card below photo */}
                 <div style={{
-                  marginTop: 16,
+                  marginTop: 12,
                   background: "rgba(255,255,255,0.08)",
                   border: "1px solid rgba(255,255,255,0.15)",
-                  borderRadius: 18,
-                  padding: "16px 20px",
+                  borderRadius: 16,
+                  padding: "12px 16px",
                   backdropFilter: "blur(12px)",
                   display: "flex",
                   alignItems: "center",
@@ -982,19 +980,19 @@ export function HomePage() {
                   transition: "opacity 400ms ease, transform 400ms ease",
                 }}>
                   <div>
-                    <p className={`font-bold text-white text-base leading-tight ${sans(lang)}`}>
+                    <p className={`font-bold text-white text-sm leading-tight ${sans(lang)}`}>
                       {HERO_DOCTORS[docIdx].name}
                     </p>
-                    <p className={`text-sm mt-0.5 ${sans(lang)}`} style={{ color: C.aqua }}>
+                    <p className={`text-xs mt-0.5 ${sans(lang)}`} style={{ color: C.aqua }}>
                       {HERO_DOCTORS[docIdx].role}
                     </p>
                   </div>
                   {/* Mini dot nav */}
-                  <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                  <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
                     {HERO_DOCTORS.map((_, i) => (
                       <button key={i} onClick={() => { setFading(true); setTimeout(() => { setDocIdx(i); setFading(false); }, 400); }}
                         style={{
-                          width: i === docIdx ? 18 : 6, height: 6, borderRadius: 3,
+                          width: i === docIdx ? 16 : 5, height: 5, borderRadius: 3,
                           background: i === docIdx ? C.aqua : "rgba(255,255,255,0.3)",
                           border: "none", cursor: "pointer", padding: 0,
                           transition: "all 300ms ease",
@@ -1043,7 +1041,7 @@ export function HomePage() {
       {/* ── Featured Services 3D Carousel ── */}      <ServiceCarousel lang={lang} c={c} />
 
       {/* ── Recovery Journey ── */}
-      <section style={{ background: C.mint, paddingTop: 48, paddingBottom: 56 }}>
+      <section style={{ ...HOME_VIEWPORT_SECTION, background: C.mint, paddingTop: "clamp(32px, 5vh, 48px)", paddingBottom: "clamp(36px, 6vh, 56px)" }}>
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
           <Reveal className="text-center mb-8">
             <Eyebrow lang={lang}>{c.journeyLabel}</Eyebrow>
@@ -1069,11 +1067,11 @@ export function HomePage() {
       </section>
 
       {/* ── Our Team ── */}
-            <section style={{ background: "linear-gradient(145deg, #fff 0%, #F8F1F6 52%, #F5EFE5 100%)", paddingTop: 72, paddingBottom: 76, overflow: "hidden", position: "relative" }}>
+      <section style={{ ...HOME_VIEWPORT_SECTION, background: "linear-gradient(145deg, #fff 0%, #F8F1F6 52%, #F5EFE5 100%)", paddingTop: "clamp(28px, 4vh, 44px)", paddingBottom: "clamp(28px, 4vh, 44px)", position: "relative" }}>
         <div style={{ position: "absolute", top: -180, right: -100, width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle, rgba(214,41,118,0.11), transparent 68%)", pointerEvents: "none" }} />
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 relative">
           <Reveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 mb-10">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-6">
               <div className="max-w-3xl">
                 <span className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-4 ${sans(lang)}`} style={{ color: "#C13584" }}><Instagram className="w-4 h-4" /> {instagram.label}</span>
                 <h2 className={`${serif(lang)} mb-4`} style={{ fontSize: "clamp(34px, 4vw, 54px)", color: C.text, fontWeight: 600, lineHeight: 1.08 }}>{instagram.head}</h2>
@@ -1118,7 +1116,7 @@ export function HomePage() {
       </section>
 
       {/* ── Our Team ── */}
-      <section style={{ background: C.white, paddingTop: 48, paddingBottom: 56 }}>
+      <section style={{ ...HOME_VIEWPORT_SECTION, background: C.white, paddingTop: "clamp(32px, 5vh, 48px)", paddingBottom: "clamp(36px, 6vh, 56px)" }}>
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
           <Reveal className="mb-6">
             <Eyebrow lang={lang}>{c.teamLabel}</Eyebrow>
@@ -1188,7 +1186,7 @@ export function HomePage() {
       </section>
 
       {/* ── Location ── */}
-      <section style={{ background: C.mint, paddingTop: 48, paddingBottom: 56 }}>
+      <section style={{ ...HOME_VIEWPORT_SECTION, background: C.mint, paddingTop: "clamp(32px, 5vh, 48px)", paddingBottom: "clamp(36px, 6vh, 56px)" }}>
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <Reveal>
@@ -1249,38 +1247,39 @@ export function HomePage() {
               </div>
             </Reveal>
           </div>
+          <Reveal className="mt-6">
+            <div style={{ background: C.hero, borderRadius: 24, padding: "clamp(20px, 3vh, 28px) clamp(22px, 3vw, 36px)", position: "relative", overflow: "hidden", boxShadow: "0 18px 48px rgba(15,37,80,0.2)" }}>
+              <div style={{ position: "absolute", inset: 0, opacity: 0.05, backgroundImage: "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+              <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+                <div>
+                  <h2 className={`${serif(lang)} text-white mb-2`} style={{ fontSize: "clamp(26px, 3vw, 38px)", fontWeight: 600, lineHeight: 1.08, whiteSpace: "pre-line" }}>
+                    {c.ctaHead}
+                  </h2>
+                  <p className={`text-white/60 text-sm lg:text-base ${sans(lang)}`}>{c.ctaBody}</p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                  <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
+                    className={`flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm bg-white transition-all ${sans(lang)}`}
+                    style={{ color: C.hero, boxShadow: "0 8px 24px rgba(0,0,0,0.18)" }}
+                    onMouseOver={e => { e.currentTarget.style.transform = "translateY(-2px)"; }}
+                    onMouseOut={e => { e.currentTarget.style.transform = ""; }}>
+                    <MessageCircle className="w-4 h-4" style={{ color: C.wa }} />
+                    {lang === "en" ? "WhatsApp Now" : c.whatsapp}
+                  </a>
+                  <a href={CALL1}
+                    className={`flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-white font-bold text-sm transition-all ${sans(lang)}`}
+                    style={{ border: "1.5px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.07)" }}
+                    onMouseOver={e => { e.currentTarget.style.background = "rgba(255,255,255,0.13)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                    onMouseOut={e => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; e.currentTarget.style.transform = ""; }}>
+                    <Phone className="w-4 h-4" />{c.callBtn}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
-      <section style={{ background: C.hero, paddingTop: 48, paddingBottom: 56, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, opacity: 0.04, backgroundImage: "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
-        <Reveal>
-          <div className="max-w-3xl mx-auto px-4 text-center">
-            <h2 className={`${serif(lang)} text-white mb-4`} style={{ fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 600, lineHeight: 1.1, whiteSpace: "pre-line" }}>
-              {c.ctaHead}
-            </h2>
-            <p className={`text-white/60 text-lg mb-10 ${sans(lang)}`}>{c.ctaBody}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-3 px-10 py-4 rounded-2xl text-[${C.hero}] font-bold text-base bg-white transition-all ${sans(lang)}`}
-                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
-                onMouseOver={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 16px 48px rgba(0,0,0,0.25)"; }}
-                onMouseOut={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.2)"; }}>
-                <MessageCircle className="w-5 h-5" style={{ color: C.wa }} />
-                {lang === "en" ? "WhatsApp Now" : c.whatsapp}
-              </a>
-              <a href={CALL1}
-                className={`flex items-center justify-center gap-3 px-10 py-4 rounded-2xl text-white font-bold text-base transition-all ${sans(lang)}`}
-                style={{ border: "1.5px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.07)" }}
-                onMouseOver={e => { e.currentTarget.style.background = "rgba(255,255,255,0.13)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseOut={e => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; e.currentTarget.style.transform = ""; }}>
-                <Phone className="w-5 h-5" />{c.callBtn}
-              </a>
-            </div>
-          </div>
-        </Reveal>
-      </section>
     </main>
   );
 }
@@ -1682,7 +1681,8 @@ export function TeamPage() {
 export function ContactPage() {
   const { lang } = useLang();
   const c = t[lang];
-  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+  const formspreeEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined) || "https://formspree.io/f/mykrdger";
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const appointmentField: CSSProperties = {
     width: "100%",
     padding: "11px 14px",
@@ -1691,6 +1691,26 @@ export function ContactPage() {
     background: "#F1FAF8",
     color: C.text,
     outline: "none",
+  };
+
+  const handleAppointmentSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setFormStatus("submitting");
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Appointment request could not be submitted.");
+      form.reset();
+      setFormStatus("success");
+    } catch {
+      setFormStatus("error");
+    }
   };
   return (
     <main>
@@ -1755,6 +1775,7 @@ export function ContactPage() {
             <form
               action={formspreeEndpoint}
               method="POST"
+              onSubmit={handleAppointmentSubmit}
               style={{ height: "100%", background: C.white, padding: "clamp(20px, 3vw, 28px)", borderRadius: 24, border: "1px solid #DDE7E5", boxShadow: "0 18px 50px rgba(15,37,80,0.08)" }}
             >
               <input type="hidden" name="_subject" value="New appointment request — Santosh Healix" />
@@ -1815,19 +1836,26 @@ export function ContactPage() {
                 </label>
               </div>
 
-              {!formspreeEndpoint && (
-                <p role="alert" className={sans(lang)} style={{ marginTop: 18, color: "#B42318", fontSize: 13, fontWeight: 600 }}>
-                  Form submission will activate after VITE_FORMSPREE_ENDPOINT is added to the deployment environment.
-                </p>
-              )}
+              <div aria-live="polite">
+                {formStatus === "success" && (
+                  <p role="status" className={sans(lang)} style={{ marginTop: 18, color: "#148B57", fontSize: 13, fontWeight: 600 }}>
+                    Your appointment request was sent successfully. Our clinic team will contact you to confirm the slot.
+                  </p>
+                )}
+                {formStatus === "error" && (
+                  <p role="alert" className={sans(lang)} style={{ marginTop: 18, color: "#B42318", fontSize: 13, fontWeight: 600 }}>
+                    We could not send your request. Please try again or contact the clinic by phone.
+                  </p>
+                )}
+              </div>
 
               <button
                 type="submit"
-                disabled={!formspreeEndpoint}
+                disabled={formStatus === "submitting"}
                 className={sans(lang)}
-                style={{ width: "100%", marginTop: 18, padding: "13px 20px", border: 0, borderRadius: 16, background: C.hero, color: "#fff", fontSize: 16, fontWeight: 700, cursor: formspreeEndpoint ? "pointer" : "not-allowed", opacity: formspreeEndpoint ? 1 : 0.6 }}
+                style={{ width: "100%", marginTop: 18, padding: "13px 20px", border: 0, borderRadius: 16, background: C.hero, color: "#fff", fontSize: 16, fontWeight: 700, cursor: formStatus === "submitting" ? "wait" : "pointer", opacity: formStatus === "submitting" ? 0.7 : 1 }}
               >
-                Submit Appointment Request
+                {formStatus === "submitting" ? "Sending Request..." : "Submit Appointment Request"}
               </button>
             </form>
             </Reveal>
@@ -1897,7 +1925,8 @@ export function ContactPage() {
                 </div>
                 <div style={{ borderRadius: 20, overflow: "hidden", position: "relative", border: `1px solid ${C.border}` }}>
                   <iframe
-                    title="Santosh Healix contact map"
+                    title=""
+                    aria-label="Santosh Healix contact map"
                     src="https://maps.google.com/maps?q=Shreenath+Puram+Stadium+Kota+Rajasthan&output=embed&z=16"
                     style={{ width: "100%", height: 300, border: 0, display: "block" }}
                     loading="lazy"
