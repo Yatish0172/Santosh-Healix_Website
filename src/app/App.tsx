@@ -638,7 +638,7 @@ function ServiceCarousel({ lang, c }: { lang: Lang; c: typeof t["en"] }) {
 
   return (
     <section
-      style={{ ...HOME_VIEWPORT_SECTION, background: "linear-gradient(160deg, #09172F 0%, #0A1B3F 55%, #050B1C 100%)", paddingTop: "clamp(32px, 5vh, 52px)", paddingBottom: "clamp(32px, 5vh, 52px)", position: "relative" }}
+      style={{ minHeight: "calc(100svh - 80px)", background: "linear-gradient(160deg, #09172F 0%, #0A1B3F 55%, #050B1C 100%)", paddingTop: "clamp(32px, 5vh, 52px)", paddingBottom: "clamp(32px, 5vh, 52px)", overflow: "hidden", position: "relative" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}>
 
