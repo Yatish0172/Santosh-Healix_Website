@@ -865,7 +865,16 @@ export function HomePage() {
   return (
     <main>
       {/* ── Hero ── */}
-      <section style={{ background: C.hero, height: "calc(100svh - 66px)", minHeight: 640, display: "flex", alignItems: "center", paddingTop: 100, position: "relative", overflow: "hidden" }}>
+      <section style={{
+        background: C.hero,
+        minHeight: "calc(100svh - 66px)",
+        display: "flex",
+        alignItems: "center",
+        paddingTop: 100,
+        paddingBottom: 72,
+        position: "relative",
+        overflow: "hidden",
+      }}>
         {/* Background image */}
         <img src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1800&q=80"
           alt="" aria-hidden="true"
@@ -874,7 +883,7 @@ export function HomePage() {
         <div style={{ position: "absolute", inset: 0, opacity: 0.04,
           backgroundImage: "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
           backgroundSize: "48px 48px" }} />
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 w-full py-2 lg:py-3">
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 w-full py-2 lg:py-3" style={{ position: "relative", zIndex: 1 }}>
           <div className="grid lg:grid-cols-[1.12fr_0.88fr] gap-8 xl:gap-12 items-center">
             {/* Left */}
             <div>
@@ -998,7 +1007,7 @@ export function HomePage() {
           </div>
         </div>
         {/* Wave */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}>
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, pointerEvents: "none" }}>
           <svg viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "block", width: "100%" }}>
             <path d="M0 56L1440 56L1440 28C1200 56 900 0 600 18C300 36 120 10 0 28Z" fill={C.hero} />
           </svg>
