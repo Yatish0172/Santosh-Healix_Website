@@ -153,6 +153,8 @@ const t = {
       { n: "02", title: "Personalized Plan", body: "A structured rehabilitation programme designed around your specific needs and recovery timeline." },
       { n: "03", title: "Guided Rehabilitation", body: "Hands-on therapy sessions with ongoing guidance to build strength, mobility, and confidence." },
       { n: "04", title: "Progress Review", body: "Regular reassessment to track your recovery and adjust the plan as you improve." },
+      { n: "05", title: "Home Exercise Support", body: "Simple exercises and practical advice to help you continue making progress between clinic sessions." },
+      { n: "06", title: "Long-Term Prevention", body: "Movement strategies and education to maintain results, reduce recurrence risk, and support confident activity." },
     ],
     teamLabel: "Your Clinicians", teamHead: "Our Specialist Team",
     locationLabel: "Location", locationHead: "Find Us in Kota",
@@ -229,6 +231,8 @@ const t = {
       { n: "02", title: "व्यक्तिगत योजना", body: "आपकी विशेष जरूरतों के अनुसार तैयार पुनर्वास कार्यक्रम।" },
       { n: "03", title: "निर्देशित पुनर्वास", body: "ताकत, गतिशीलता और आत्मविश्वास बढ़ाने वाले थेरेपी सत्र।" },
       { n: "04", title: "प्रगति समीक्षा", body: "नियमित जाँच और आवश्यक सुधार।" },
+      { n: "05", title: "घर पर व्यायाम सहायता", body: "क्लिनिक सत्रों के बीच प्रगति जारी रखने के लिए सरल व्यायाम और व्यावहारिक मार्गदर्शन।" },
+      { n: "06", title: "दीर्घकालिक रोकथाम", body: "परिणाम बनाए रखने, दोबारा समस्या का जोखिम कम करने और आत्मविश्वासपूर्ण गतिविधि के लिए मार्गदर्शन।" },
     ],
     teamLabel: "आपके चिकित्सक", teamHead: "हमारी विशेषज्ञ टीम",
     locationLabel: "स्थान", locationHead: "हमें खोजें",
@@ -1049,14 +1053,14 @@ export function HomePage() {
               {c.journeyHead}
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
             {c.journeySteps.map((step, i) => (
               <Reveal key={step.n} delay={i * 70}>
-                <div style={{ background: "#fff", borderRadius: 20, padding: "28px", border: `1px solid ${C.border}`, height: "100%", position: "relative" }}>
-                  <div style={{ fontSize: 40, fontWeight: 700, color: C.mint, lineHeight: 1, marginBottom: 20, fontFamily: "Fraunces, serif", userSelect: "none" }}>{step.n}</div>
+                <div style={{ background: "#fff", borderRadius: 20, padding: "clamp(18px, 2vw, 24px)", border: `1px solid ${C.border}`, height: "100%", position: "relative" }}>
+                  <div style={{ fontSize: 34, fontWeight: 700, color: C.mint, lineHeight: 1, marginBottom: 14, fontFamily: "Fraunces, serif", userSelect: "none" }}>{step.n}</div>
                   <h3 className={`font-semibold mb-2 ${sans(lang)}`} style={{ color: C.text }}>{step.title}</h3>
                   <p className={`text-sm leading-relaxed ${sans(lang)}`} style={{ color: C.sub }}>{step.body}</p>
-                  <div style={{ position: "absolute", top: 28, right: 24, width: 28, height: 28, borderRadius: "50%", background: C.mint, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ position: "absolute", top: 20, right: 18, width: 28, height: 28, borderRadius: "50%", background: C.mint, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <span style={{ fontSize: 12, fontWeight: 700, color: C.green }}>{i + 1}</span>
                   </div>
                 </div>
