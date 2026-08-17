@@ -20,7 +20,8 @@ type Page = "home" | "about" | "services" | "team" | "contact"; // kept for nav 
 const WHATSAPP = "https://wa.me/919649579679";
 const CALL1 = "tel:+919649579679";
 const CALL2 = "tel:+919649579679";
-const MAPS = "https://maps.google.com/?q=Plot+D-23+Shreenath+Puram+Stadium+Kota+Rajasthan";
+const MAPS = "https://maps.app.goo.gl/a1oHnLZJnvtwCkux8?g_st=ac";
+const MAP_EMBED = "https://maps.google.com/maps?q=Santosh%20Healix%2C%20Plot%20No.%20D-23%2C%20Infront%20of%20National%20Stadium%2C%20near%20Varshney%20Children%20Hospital%2C%20Sector%20B%2C%20Shrinath%20Puram%2C%20Kota%2C%20Rajasthan%20324010&output=embed&z=18";
 const INSTAGRAM = "https://www.instagram.com/santosh_healix?igsh=bTRya29hZDBwdXNi";
 const FACEBOOK = "https://www.facebook.com/profile.php?id=61551608922026";
 
@@ -72,37 +73,45 @@ function Reveal({ children, delay = 0, className = "" }: {
   );
 }
 
-function InstagramLiveFeed({ lang }: { lang: Lang }) {
-  useEffect(() => {
-    const processEmbed = () => (window as any).instgrm?.Embeds?.process();
-    const existing = document.querySelector<HTMLScriptElement>('script[src="https://www.instagram.com/embed.js"]');
+type InstagramPreviewPost = {
+  image: string;
+  tag: string;
+  title: string;
+  meta: string;
+};
 
-    if (existing) {
-      processEmbed();
-      existing.addEventListener("load", processEmbed, { once: true });
-      return () => existing.removeEventListener("load", processEmbed);
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://www.instagram.com/embed.js";
-    script.async = true;
-    script.onload = processEmbed;
-    document.body.appendChild(script);
-    return () => { script.onload = null; };
-  }, []);
-
+function InstagramLiveFeed({ lang, posts }: { lang: Lang; posts: InstagramPreviewPost[] }) {
   return (
-    <div style={{ width: "100%", height: "clamp(320px, 42svh, 420px)", overflow: "hidden", display: "flex", alignItems: "flex-start", justifyContent: "center" }}>
-      <blockquote
-        className="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/santosh_healix/"
-        data-instgrm-version="14"
-        style={{ background: "#fff", border: 0, borderRadius: 24, boxShadow: "0 18px 52px rgba(15,37,80,0.14)", margin: "0 auto", maxWidth: 720, minWidth: 326, padding: 0, width: "calc(100% - 2px)" }}>
-        <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className={`flex min-h-[320px] items-center justify-center gap-2 text-base font-bold ${sans(lang)}`} style={{ color: "#C13584" }}>
-          <Instagram className="w-5 h-5" />
-          {lang === "en" ? "Loading @santosh_healix…" : "@santosh_healix लोड हो रहा है…"}
+    <div
+      className="grid grid-cols-[1.15fr_0.85fr] grid-rows-2 gap-2.5"
+      style={{ width: "100%", height: "clamp(320px, 42svh, 420px)" }}>
+      {posts.map((post, index) => (
+        <a
+          key={post.title}
+          href={INSTAGRAM}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${post.title} — ${lang === "en" ? "view on Instagram" : "Instagram पर देखें"}`}
+          className={`group relative min-h-0 overflow-hidden rounded-2xl ${index === 0 ? "row-span-2" : ""}`}>
+          <ImageWithFallback
+            src={post.image}
+            alt={post.title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <span className="absolute inset-0 bg-gradient-to-t from-[#071937]/95 via-[#071937]/20 to-transparent" />
+          <span className={`absolute inset-x-0 bottom-0 flex flex-col items-start gap-1.5 p-3.5 text-white ${sans(lang)}`}>
+            <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#C13584]">
+              {post.tag}
+            </span>
+            <strong className={`${index === 0 ? "text-sm sm:text-base" : "text-xs sm:text-sm"} line-clamp-2 leading-snug`}>
+              {post.title}
+            </strong>
+            <span className="flex items-center gap-1 text-[11px] font-semibold text-white/80">
+              <Instagram className="h-3 w-3" /> {post.meta}
+            </span>
+          </span>
         </a>
-      </blockquote>
+      ))}
     </div>
   );
 }
@@ -1101,7 +1110,7 @@ export function HomePage() {
                   </div>
                   <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Open Instagram"><ArrowUpRight className="w-5 h-5" style={{ color: "#C13584" }} /></a>
                 </div>
-                <InstagramLiveFeed lang={lang} />
+                <InstagramLiveFeed lang={lang} posts={instagram.posts} />
               </div>
             </Reveal>
             <Reveal delay={80}>
@@ -1224,7 +1233,7 @@ export function HomePage() {
               <div style={{ borderRadius: 24, overflow: "hidden", position: "relative", boxShadow: "0 16px 56px rgba(15,37,80,0.14)", border: `1px solid ${C.border}` }}>
                 <iframe
                   title="Santosh Healix location map"
-                  src="https://maps.google.com/maps?q=Shreenath+Puram+Stadium+Kota+Rajasthan&output=embed&z=16"
+                  src={MAP_EMBED}
                   style={{ width: "100%", height: 420, border: 0, display: "block" }}
                   loading="lazy"
                   allowFullScreen
@@ -1931,7 +1940,7 @@ export function ContactPage() {
                   <iframe
                     title=""
                     aria-label="Santosh Healix contact map"
-                    src="https://maps.google.com/maps?q=Shreenath+Puram+Stadium+Kota+Rajasthan&output=embed&z=16"
+                    src={MAP_EMBED}
                     style={{ width: "100%", height: 300, border: 0, display: "block" }}
                     loading="lazy"
                     allowFullScreen
