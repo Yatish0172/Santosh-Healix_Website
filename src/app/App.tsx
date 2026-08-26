@@ -483,14 +483,19 @@ export function MobileBar({ lang }: { lang: Lang }) {
   }, []);
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
-      style={{ background: "#fff", borderTop: `1.5px solid ${C.border}`, padding: "8px 12px", display: "flex", gap: 8,
+      style={{ background: "#fff", borderTop: `1.5px solid ${C.border}`, padding: "8px 10px", display: "flex", gap: 6,
         transform: show ? "translateY(0)" : "translateY(100%)", transition: "transform 300ms ease" }}>
-      <a href={CALL1} className={`flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl text-white text-sm font-bold ${sans(lang)}`}
+      <a href={CALL1} className={`min-w-0 flex-1 flex items-center justify-center gap-1.5 py-3.5 rounded-2xl text-white text-xs sm:text-sm font-bold whitespace-nowrap ${sans(lang)}`}
         style={{ background: C.hero }}>
         <Phone className="w-4 h-4" />{c.callNow}
       </a>
+      <a href={MAPS} target="_blank" rel="noopener noreferrer"
+        className={`min-w-0 flex-1 flex items-center justify-center gap-1.5 py-3.5 rounded-2xl text-white text-xs sm:text-sm font-bold whitespace-nowrap ${sans(lang)}`}
+        style={{ background: C.gold }}>
+        <MapPin className="w-4 h-4" />{c.getDirections}
+      </a>
       <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
-        className={`flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl text-white text-sm font-bold ${sans(lang)}`}
+        className={`min-w-0 flex-1 flex items-center justify-center gap-1.5 py-3.5 rounded-2xl text-white text-xs sm:text-sm font-bold whitespace-nowrap ${sans(lang)}`}
         style={{ background: C.wa }}>
         <MessageCircle className="w-4 h-4" />{c.whatsapp}
       </a>
