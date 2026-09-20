@@ -20,8 +20,8 @@ type Page = "home" | "about" | "services" | "team" | "contact"; // kept for nav 
 const WHATSAPP = "https://wa.me/919649579679";
 const CALL1 = "tel:+919649579679";
 const CALL2 = "tel:+919649579679";
-const MAPS = "https://maps.app.goo.gl/a1oHnLZJnvtwCkux8?g_st=ac";
-const MAP_EMBED = "https://maps.google.com/maps?q=cid%3A6796877521857837199&output=embed&z=18";
+const MAPS = "https://share.google/92bHpZ0Tqk7eJKXXe";
+const MAP_EMBED = "https://maps.google.com/maps?q=25.1423513%2C75.8211122&output=embed&z=18";
 const INSTAGRAM = "https://www.instagram.com/santosh_healix?igsh=bTRya29hZDBwdXNi";
 const FACEBOOK = "https://www.facebook.com/profile.php?id=61551608922026";
 
