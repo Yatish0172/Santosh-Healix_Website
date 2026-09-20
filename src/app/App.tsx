@@ -21,7 +21,7 @@ const WHATSAPP = "https://wa.me/919649579679";
 const CALL1 = "tel:+919649579679";
 const CALL2 = "tel:+919649579679";
 const MAPS = "https://maps.app.goo.gl/a1oHnLZJnvtwCkux8?g_st=ac";
-const MAP_EMBED = "https://maps.google.com/maps?q=Santosh%20Healix%2C%20Plot%20No.%20D-23%2C%20Infront%20of%20National%20Stadium%2C%20near%20Varshney%20Children%20Hospital%2C%20Sector%20B%2C%20Shrinath%20Puram%2C%20Kota%2C%20Rajasthan%20324010&output=embed&z=18";
+const MAP_EMBED = "https://maps.google.com/maps?q=cid%3A6796877521857837199&output=embed&z=18";
 const INSTAGRAM = "https://www.instagram.com/santosh_healix?igsh=bTRya29hZDBwdXNi";
 const FACEBOOK = "https://www.facebook.com/profile.php?id=61551608922026";
 
